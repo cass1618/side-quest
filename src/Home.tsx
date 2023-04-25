@@ -15,12 +15,23 @@ const cardStyle = css({
 	margin: '1vw',
 });
 
+const buttonStyle = css({
+	margin: '1vh',
+});
+
 function Home() {
 	const [flip, setFlip] = useState<Boolean>(false);
 
 	const handleNewAssignment = () => {
 		setFlip(!flip);
-		console.log(flip);
+	};
+
+	const handleAddYourOwn = () => {
+		console.log('add your own');
+	};
+
+	const handleNarrowDown = () => {
+		console.log('select filters');
 	};
 
 	return (
@@ -30,15 +41,43 @@ function Home() {
 					<Card css={cardStyle}>
 						{!flip ? (
 							<CardContent className="front">
-								<Tooltip title="If you have no idea what to do with yourself, get assigned a random activity">
-									<Button onClick={handleNewAssignment}>
+								<Tooltip title="If you have no idea what to do with yourself, get assigned a random activity.">
+									<Button
+										css={buttonStyle}
+										variant="contained"
+										onClick={handleNewAssignment}
+									>
 										New Assignment
+									</Button>
+								</Tooltip>
+								<Tooltip title="If you are feeling somewhat decisive, take some time to select preferences to help curate a task that you're interested in">
+									<Button
+										css={buttonStyle}
+										variant="contained"
+										onClick={handleNarrowDown}
+									>
+										Narrow it Down
+									</Button>
+								</Tooltip>
+								<Tooltip title="If you have a lot of ideas and some spare time, add your own quests to the mix.">
+									<Button
+										css={buttonStyle}
+										variant="contained"
+										onClick={handleAddYourOwn}
+									>
+										Add Your Own Quest
 									</Button>
 								</Tooltip>
 							</CardContent>
 						) : (
 							<CardContent className="back">
-								<h3>Your Mission</h3>
+								<h2>Your Mission</h2>
+								<h3>Organize your closet</h3>
+								<p>
+									{' '}
+									- select some items that you don't wear
+									anymore to donate
+								</p>
 							</CardContent>
 						)}
 					</Card>
