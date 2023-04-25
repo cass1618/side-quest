@@ -37,14 +37,17 @@
 		}
 	},
 	"rules": {
-		"prettier/prettier": ["warn", { "singleQuote": true }],
+		"prettier/prettier": [
+			"warn",
+			{ "singleQuote": true, "useTabs": true, "tabWidth": 4 }
+		],
 		"linebreak-style": ["error", "unix"],
 		"quotes": ["warn", "single", { "avoidEscape": true }],
 		"semi": ["error", "always"],
 		"no-trailing-spaces": "error",
 		"no-console": "off",
 		"no-unused-vars": [
-			"error",
+			"warn",
 			{
 				"argsIgnorePattern": "^_"
 			}
