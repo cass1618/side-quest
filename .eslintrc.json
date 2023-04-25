@@ -5,10 +5,10 @@
 		"node": true,
 		"jest": true
 	},
-	"parser": "@babel/eslint-parser",
+	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaFeatures": {
-			"jsx": true
+			"tsx": true
 		},
 		"requireConfigFile": false,
 		"ecmaVersion": 12,
@@ -31,7 +31,7 @@
 		},
 		"import/resolver": {
 			"node": {
-				"extensions": [".js", ".jsx", ".ts", ".tsx"],
+				"extensions": [".js", ".ts", ".tsx"],
 				"moduleDirectory": ["node_modules", "src"]
 			}
 		}
