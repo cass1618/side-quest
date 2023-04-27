@@ -5,10 +5,10 @@
 		"node": true,
 		"jest": true
 	},
-	"parser": "@babel/eslint-parser",
+	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaFeatures": {
-			"jsx": true
+			"tsx": true
 		},
 		"requireConfigFile": false,
 		"ecmaVersion": 12,
@@ -31,20 +31,23 @@
 		},
 		"import/resolver": {
 			"node": {
-				"extensions": [".js", ".jsx", ".ts", ".tsx"],
+				"extensions": [".js", ".ts", ".tsx"],
 				"moduleDirectory": ["node_modules", "src"]
 			}
 		}
 	},
 	"rules": {
-		"prettier/prettier": ["warn", { "singleQuote": true }],
+		"prettier/prettier": [
+			"warn",
+			{ "singleQuote": true, "useTabs": true, "tabWidth": 4 }
+		],
 		"linebreak-style": ["error", "unix"],
 		"quotes": ["warn", "single", { "avoidEscape": true }],
 		"semi": ["error", "always"],
 		"no-trailing-spaces": "error",
 		"no-console": "off",
 		"no-unused-vars": [
-			"error",
+			"warn",
 			{
 				"argsIgnorePattern": "^_"
 			}
