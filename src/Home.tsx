@@ -1,8 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import React, { MouseEventHandler, useState } from 'react';
+import { useState } from 'react';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import { Button, Card, CardContent, Tooltip } from '@mui/material';
+import { Avatar, Button, Card, CardContent, Tooltip } from '@mui/material';
+import QuestList from 'QuestList';
+import Login from 'Login';
 
 import { css } from '@emotion/react';
 
@@ -13,31 +15,57 @@ const containerStyle = css({
 const cardStyle = css({
 	padding: '1vw',
 	margin: '1vw',
+	textAlign: 'center',
 });
 
 const buttonStyle = css({
-	margin: '1vh',
+	margin: '2vh',
+	height: '10vh',
+	width: '90%',
+});
+
+const avatarStyle = css({
+	marginLeft: '80%',
+	marginBottom: '2vh',
+	height: '8vh',
+	width: '8vh',
 });
 
 function Home() {
 	const flipCard = () => {
 		const [flip, setFlip] = useState<String>('home');
+
 		const handleNewAssignment = () => {
 			setFlip('assign');
 		};
 
 		const handleAddYourOwn = () => {
 			setFlip('add');
-			console.log('add your own');
 		};
 
 		const handleNarrowDown = () => {
 			setFlip('narrow');
 		};
+
+		const handleViewList = () => {
+			setFlip('list');
+		};
+
+		const handleLogin = () => {
+			setFlip('login');
+		};
+
+		const handleHome = () => {
+			setFlip('home');
+		};
+
 		switch (flip) {
 			case 'home':
 				return (
 					<CardContent className="home">
+						<Avatar css={avatarStyle} onClick={handleLogin}>
+							/
+						</Avatar>
 						<Tooltip title="If you have no idea what to do with yourself, get assigned a random activity.">
 							<Button
 								css={buttonStyle}
@@ -65,6 +93,15 @@ function Home() {
 								Add Your Own Quest
 							</Button>
 						</Tooltip>
+						<Tooltip title="See all in progress and completed quests">
+							<Button
+								css={buttonStyle}
+								variant="contained"
+								onClick={handleViewList}
+							>
+								View All Quests
+							</Button>
+						</Tooltip>
 					</CardContent>
 				);
 
@@ -86,6 +123,12 @@ function Home() {
 			case 'narrow':
 				return <CardContent className="home">filters</CardContent>;
 
+			case 'list':
+				return <QuestList />;
+
+			case 'login':
+				return <Login handleHome={handleHome} />;
+
 			default:
 				return null;
 		}
@@ -94,14 +137,8 @@ function Home() {
 	return (
 		<Container css={containerStyle}>
 			<Grid container spacing={2}>
-				<Grid item xs={4}>
+				<Grid item xs={6}>
 					<Card css={cardStyle}>{flipCard()}</Card>
-				</Grid>
-				<Grid item xs={4}>
-					<Card css={cardStyle}>Card 2</Card>
-				</Grid>
-				<Grid item xs={4}>
-					<Card css={cardStyle}>Card 3</Card>
 				</Grid>
 			</Grid>
 		</Container>

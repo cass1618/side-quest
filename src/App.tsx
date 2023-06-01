@@ -1,8 +1,8 @@
 import './App.scss';
 import Home from './Home';
 
-function App() {
+const App = () => {
 	return <Home />;
-}
+};
 
 export default App;
